@@ -1,6 +1,8 @@
 library(randomForest)
 
-samme <- function(formula,data,y,test,m=5,trace=T,ntree=500,mtry=NULL) {
+samme <- function(formula,data,test,m=5,trace=T,ntree=500,mtry=NULL) {
+  outcome.label <- outcomeLabel(formula)
+  y <- data[,outcome.label]
   mtry <- ifelse(is.null(mtry),floor(sqrt(ncol(data))),mtry)
   C <- matrix(nrow=nrow(test),ncol=m)
   n <- nrow(data)
@@ -10,7 +12,7 @@ samme <- function(formula,data,y,test,m=5,trace=T,ntree=500,mtry=NULL) {
   
   for (i in 1:m) {
     t <- data[sample(n, n,replace=T,prob=w), ]
-    t$activity<-droplevels(t$activity) # in case any outcomes are not sampled
+    t[,outcome.label]<-droplevels(t[,outcome.label]) # in case any outcomes are not sampled
     fit <- randomForest(formula,data=t,do.trace=trace,ntree=ntree,mtry=mtry)
     C[,i]<-as.character(predict(fit,test))
     h<-predict(fit,data)
@@ -71,4 +73,8 @@ prediction <- function(votes.table) {
 
 maxVotes <- function(votes.table) {
   names(which(votes.table==max(votes.table)))
+}
+
+outcomeLabel <- function(formula) {
+  toString(formula[[2]])
 }
