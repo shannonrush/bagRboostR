@@ -5,8 +5,8 @@ Version: 0.0.1
 Author: Shannon Rush <shannonmrush@gmail.com>
 Maintainer: Shannon Rush <shannonmrush@gmail.com>
 Description: bagRboostR is a set of ensemble classifiers for multinomial
-    classification. The bag part is the implementation of Breiman's ensemble as
-    described by Opitz & Maclin (1999). The boost part is the implementation of
+    classification. The bagging function is the implementation of Breiman's ensemble as
+    described by Opitz & Maclin (1999). The boosting function is the implementation of
     Stagewise Additive Modeling using a Multi-class Exponential loss function
     (SAMME) created by Zhu et al (2006). Both bagging and SAMME implementations
     use randomForest as the weak classifier and expect a character outcome

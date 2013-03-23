@@ -1,5 +1,7 @@
+#' @import randomForest
 library(randomForest)
 
+#' @export
 samme <- function(formula,data,test,m=5,trace=T,ntree=500,mtry=NULL) {
   outcome.label <- outcomeLabel(formula)
   y <- data[,outcome.label]

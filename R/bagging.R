@@ -1,5 +1,7 @@
+#' @import randomForest 
 library(randomForest)
 
+#' @export
 bagging <- function(formula,data,test,m=5,ntree=500,mtry=NULL,trace=T) {
   outcome.label <- outcomeLabel(formula)
   mtry <- ifelse(is.null(mtry),floor(sqrt(ncol(data))),mtry)
