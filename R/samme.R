@@ -75,6 +75,4 @@ maxVotes <- function(votes.table) {
   names(which(votes.table==max(votes.table)))
 }
 
-outcomeLabel <- function(formula) {
-  toString(formula[[2]])
-}
+

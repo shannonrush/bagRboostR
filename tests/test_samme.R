@@ -2,10 +2,7 @@ library(testthat)
 source("../R/samme.R")
 
 context("SAMME as described by Zhu")
-test_that("outcomeLabel returns the string before ~ from formula input", {
-  formula <- as.formula("activity~.")
-  expect_equal(outcomeLabel(formula),"activity")
-})
+
 
 test_that("error returns the sum of the misclassified weights", {
   w <- rep(0.1,10)

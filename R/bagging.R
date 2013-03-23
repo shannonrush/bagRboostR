@@ -11,24 +11,21 @@ bagging <- function(formula,m,data,test,ntree=500,mtry=NULL,trace=T) {
     fit <- randomForest(formula,data=t,ntree=ntree,do.trace=trace)      
     C[,i] <- as.character(predict(fit,test))
   }
-  apply(m,1,mostOccurring)
+  apply(m,1,prediction)
 }
 
-mostOccurring <- function(sample) {
-  most <- namesMost(v)
-  ifelse(length(most)==1,most,sample(most,1))
+prediction <- function(sample) {
+  max.classes <- maxClasses(sample)
+  ifelse(length(max.classes)==1,max.classes,sample(max.classes,1))
 }
 
-numMost <- function(sample) {
+maxVoteCount <- function(sample) {
   sum(sample==names(which.max(table(sample))))
 }
 
-namesMost <- function(sample) {
-  names(which(table(sample)==numMost(sample)))
+maxClasses <- function(sample) {
+  names(which(table(sample)==maxVoteCount(sample)))
 }
 
-outcomeLabel <- function(formula) {
-  toString(formula[[2]])
-}
 
 
