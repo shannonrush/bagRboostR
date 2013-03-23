@@ -1,6 +1,6 @@
 library(randomForest)
 
-bagging <- function(formula,m,data,test,ntree=500,mtry=NULL,trace=T) {
+bagging <- function(formula,data,test,m=5,ntree=500,mtry=NULL,trace=T) {
   outcome.label <- outcomeLabel(formula)
   mtry <- ifelse(is.null(mtry),floor(sqrt(ncol(data))),mtry)
   C <- matrix(nrow=nrow(test),ncol=m)
@@ -11,7 +11,7 @@ bagging <- function(formula,m,data,test,ntree=500,mtry=NULL,trace=T) {
     fit <- randomForest(formula,data=t,ntree=ntree,do.trace=trace)      
     C[,i] <- as.character(predict(fit,test))
   }
-  apply(m,1,prediction)
+  apply(C,1,prediction)
 }
 
 prediction <- function(sample) {
