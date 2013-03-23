@@ -14,5 +14,6 @@ install_github("bagRboostR", username="shannonrush")
 
 **Future Features:**
 
--[] Additional weak classifiers
--[] Support for regression
+- [ ] Additional weak classifiers
+
+- [ ] Support for regression
