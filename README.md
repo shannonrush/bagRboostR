@@ -1,1 +1,5 @@
-R package implementing the Breiman bagging ensemble classifier as described by Opitz & Maclin (http://www.d.umn.edu/~rmaclin/publications/opitz-jair99.pdf) and the boosting ensemble classifier Stagewise Additive Modeling using a Multi-class Exponential loss function (SAMME) created by Zhu et al (http://www.stanford.edu/~hastie/Papers/samme.pdf)
+bagRboostR is an R package consisting of a set of ensemble classifiers for multinomial classification. 
+
+The bag part is the implementation of Breiman's ensemble as described by Opitz & Maclin (1999). The boost part is the implementation of Stagewise Additive Modeling using a Multi-class Exponential loss function (SAMME) created by Zhu et al (2006). 
+
+Both bagging and SAMME implementations use randomForest as the weak classifier and expect a character outcome variable.  Each ensemble classifier returns a character vector of predictions for the test set.

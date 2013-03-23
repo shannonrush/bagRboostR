@@ -11,10 +11,10 @@ bagging <- function(formula,data,test,m=5,ntree=500,mtry=NULL,trace=T) {
     fit <- randomForest(formula,data=t,ntree=ntree,do.trace=trace)      
     C[,i] <- as.character(predict(fit,test))
   }
-  apply(C,1,prediction)
+  apply(C,1,bagPrediction)
 }
 
-prediction <- function(sample) {
+bagPrediction <- function(sample) {
   max.classes <- maxClasses(sample)
   ifelse(length(max.classes)==1,max.classes,sample(max.classes,1))
 }

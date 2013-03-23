@@ -1,8 +1,12 @@
-library(testthat)
-source("../R/samme.R")
-
 context("SAMME as described by Zhu")
-
+test_that("samme returns a character vector of predicted classes",{
+  outcomes <- c("laying", "sitting", "standing", "walking", "walking_downstairs", "walking_upstairs")
+  train <- data.frame(activity=sample(outcomes,10,replace=T),V1=rnorm(10),V2=rnorm(10),V3=rnorm(10))
+  test <- data.frame(V1=rnorm(10),V2=rnorm(10),V3=rnorm(10))
+  p<-samme(activity~.,train,test,3,ntree=5,trace=F)
+  expect_is(p,"character")
+  expect_equal(length(p),nrow(test))
+})
 
 test_that("error returns the sum of the misclassified weights", {
   w <- rep(0.1,10)
