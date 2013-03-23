@@ -7,4 +7,5 @@ Both bagging and SAMME implementations use randomForest as the weak classifier a
 Installation:
 
 library(devtools)
+
 install_github("bagRboostR",username="shannonrush")
