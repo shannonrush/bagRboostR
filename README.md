@@ -6,7 +6,13 @@ The bagging function is the implementation of Breiman's ensemble as described by
 
 Both bagging and SAMME implementations use randomForest as the weak classifier and expect a character outcome variable.  Each ensemble classifier returns a character vector of predictions for the test set.
 
-**Installation:**
+**Installation:** 
+
+Via CRAN:
+
+install.packages("bagRboostR")
+
+Via Github:
 
 library(devtools)
 
