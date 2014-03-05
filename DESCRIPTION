@@ -1,7 +1,7 @@
 Package: bagRboostR
 Type: Package
 Title: Ensemble bagging and boosting classifiers
-Version: 0.0.1
+Version: 0.0.2
 Author: Shannon Rush <shannonmrush@gmail.com>
 Maintainer: Shannon Rush <shannonmrush@gmail.com>
 Description: bagRboostR is a set of ensemble classifiers for multinomial
@@ -16,7 +16,7 @@ Imports:
     randomForest
 Suggests:
     testthat
-License: MIT
+License: MIT + file LICENSE
 Collate:
     'bagging.R'
     'helpers.R'
